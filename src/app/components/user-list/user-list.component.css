@@ -1,0 +1,10 @@
+.user-list {
+    height: 90vh;
+}
+
+.user-avatar {
+    height: 20vh;
+    width: 20vh;
+    border-radius: 5%;
+    object-fit: cover;
+}

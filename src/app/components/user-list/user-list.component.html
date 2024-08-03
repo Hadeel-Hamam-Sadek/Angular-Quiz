@@ -1,1 +1,27 @@
-<p>user-list works!</p>
+<div class="container d-flex align-items-center justify-content-center user-list">
+  <!-- Loading -->
+  <div *ngIf="loading$ | async">Loading...</div>
+
+  <!-- User List -->
+  <div *ngIf="!(loading$ | async)">
+    <div class="d-flex align-items-center justify-content-center row">
+
+      <!-- User Card -->
+      <div class="d-flex align-items-center justify-content-center card py-3 px-0 col-3 m-1"
+        *ngFor="let user of (users$ | async) || [] | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: (totalCount$ | async) || 0 }"
+        (click)="navigateToUserDetails(user.id)">
+
+        <img class="user-avatar mb-3" [src]="user?.avatar" alt="{{ user?.first_name }}">
+        <h6>{{ user?.id }}- {{ user?.first_name }} {{ user?.last_name }}</h6>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div style="text-align: center; font-weight: bold; margin-bottom: 0;">
+      <pagination-controls (pageChange)="onPaginationChange($event)" previousLabel="Previous"
+        nextLabel="Next"></pagination-controls>
+    </div>
+  </div>
+
+</div>
