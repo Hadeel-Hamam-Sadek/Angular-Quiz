@@ -1,17 +1,25 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadUsers, loadUsersSuccess } from '../actions/user.actions';
+import {
+  loadUsers,
+  loadUsersSuccess,
+  loadUserDetails,
+  loadUserDetailsSuccess,
+  loadUserDetailsFailure,
+} from '../actions/user.actions';
 import { IUser } from 'src/app/models/i-user';
 
 export interface UserState {
   users: IUser[];
   loading: boolean;
   totalCount: number;
+  userDetails: IUser | null;
 }
 
 export const initialState: UserState = {
   users: [],
   loading: false,
   totalCount: 0,
+  userDetails: null,
 };
 
 export const userReducer = createReducer(
@@ -22,5 +30,15 @@ export const userReducer = createReducer(
     users,
     loading: false,
     totalCount,
+  })),
+  on(loadUserDetails, (state) => ({ ...state, loading: true })),
+  on(loadUserDetailsSuccess, (state, { user }) => ({
+    ...state,
+    userDetails: user,
+    loading: false,
+  })),
+  on(loadUserDetailsFailure, (state) => ({
+    ...state,
+    loading: false,
   }))
 );

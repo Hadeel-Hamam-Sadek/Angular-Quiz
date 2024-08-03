@@ -1,1 +1,20 @@
-<p>user-details works!</p>
+<div class="container d-flex align-items-center justify-content-center user-details mt-5">
+    <div *ngIf="loading$ | async">Loading...</div>
+
+    <div *ngIf="!(loading$ | async)">
+        <div *ngIf="user$ | async as user" class="d-flex justify-content-center align-items-center flex-column">
+
+            <img class="user-avatar mb-3" [src]="user.avatar" alt="{{ user.first_name }}">
+
+            <div class="card p-5">
+                <h5>{{ user.id }} - {{ user.first_name }} {{ user.last_name }}</h5>
+                <p>Email: {{ user.email }}</p>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <button (click)="navigateBack()">Back to User List</button> -->

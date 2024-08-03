@@ -17,3 +17,7 @@ export const selectTotalCount = createSelector(
   selectUserState,
   (state: UserState) => state.totalCount
 );
+export const selectUserDetails = createSelector(
+  selectUserState,
+  (state: UserState) => state.userDetails
+);
