@@ -12,6 +12,8 @@ import { userReducer } from './store/reducers/user.reducer';
 import { HttpClientModule } from '@angular/common/http';
 import { UserEffects } from './store/effects/user.effects';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BoxShadowDirective } from './Directives/box-shadow.directive';
+import { ScaleDirective } from './Directives/scale.directive';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppComponent,
     HeaderComponent,
     UserListComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    BoxShadowDirective,
+    ScaleDirective
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@
     <div class="d-flex align-items-center justify-content-center row">
 
       <!-- User Card -->
-      <div class="d-flex align-items-center justify-content-center card py-3 px-0 col-11 col-md-5 col-lg-3 m-1"
+      <div class="d-flex align-items-center justify-content-center user-card card py-3 px-0 col-11 col-md-5 col-lg-3 m-1" BoxShadow Scale
         *ngFor="let user of (users$ | async) || [] | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: (totalCount$ | async) || 0 }"
         (click)="navigateToUserDetails(user.id)">
 

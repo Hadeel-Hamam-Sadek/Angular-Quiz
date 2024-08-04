@@ -5,3 +5,30 @@
     border-radius: 5%;
     object-fit: cover;
 }
+
+@keyframes spin-border {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .user-card {
+    position: relative;
+    overflow: hidden; 
+  }
+  
+  .user-card::before {
+    content: '';
+    position: absolute;
+    top: -2px; 
+    left: -2px; 
+    right: -2px; 
+    bottom: -2px; 
+    border: 2px solid #007bff;
+    border-radius: inherit; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: spin-border 5s linear infinite;
+  }
