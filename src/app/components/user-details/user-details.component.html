@@ -1,5 +1,5 @@
 <div class="container d-flex align-items-center justify-content-center user-details mt-5">
-    <div *ngIf="loading$ | async">Loading...</div>
+    <div *ngIf="loading$ | async"><app-loading-bar></app-loading-bar></div>
 
     <div *ngIf="!(loading$ | async)">
         <div *ngIf="user$ | async as user" class="d-flex justify-content-center align-items-center flex-column">

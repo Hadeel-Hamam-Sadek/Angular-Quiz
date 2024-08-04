@@ -9,11 +9,13 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { userReducer } from './store/reducers/user.reducer';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { UserEffects } from './store/effects/user.effects';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { BoxShadowDirective } from './Directives/box-shadow.directive';
-import { ScaleDirective } from './Directives/scale.directive';
+import { BoxShadowDirective } from './directives/box-shadow.directive';
+import { ScaleDirective } from './directives/scale.directive';
+import { LoadingBarComponent } from './components/loading-bar/loading-bar.component';
+import { loadingInterceptor } from './interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { ScaleDirective } from './Directives/scale.directive';
     UserListComponent,
     UserDetailsComponent,
     BoxShadowDirective,
-    ScaleDirective
+    ScaleDirective,
+    LoadingBarComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,13 @@ import { ScaleDirective } from './Directives/scale.directive';
     StoreModule.forRoot({ users: userReducer }), 
     EffectsModule.forRoot([UserEffects]), 
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(
+      withInterceptors([
+        loadingInterceptor
+      ])
+    ),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
