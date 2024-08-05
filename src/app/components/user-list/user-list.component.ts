@@ -52,4 +52,5 @@ export class UserListComponent implements OnInit {
     this.currentPage = page;
     this.loadUsers(this.currentPage);
   }
+  
 }

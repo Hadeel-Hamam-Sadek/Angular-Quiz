@@ -5,6 +5,7 @@ import {
   loadUserDetails,
   loadUserDetailsSuccess,
   loadUserDetailsFailure,
+  loadUsersFailure,
 } from '../actions/user.actions';
 import { IUser } from 'src/app/models/i-user';
 
@@ -24,6 +25,8 @@ export const initialState: UserState = {
 
 export const userReducer = createReducer(
   initialState,
+
+  // Users
   on(loadUsers, (state) => ({ ...state, loading: true })),
   on(loadUsersSuccess, (state, { users, totalCount }) => ({
     ...state,
@@ -31,6 +34,12 @@ export const userReducer = createReducer(
     loading: false,
     totalCount,
   })),
+  on(loadUsersFailure, (state) => ({
+    ...state,
+    loading: false,
+  })),
+
+  // User Details
   on(loadUserDetails, (state) => ({ ...state, loading: true })),
   on(loadUserDetailsSuccess, (state, { user }) => ({
     ...state,

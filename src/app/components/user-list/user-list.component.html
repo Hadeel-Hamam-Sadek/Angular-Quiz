@@ -2,10 +2,12 @@
 
   <!-- User List -->
   <div *ngIf="!(loading$ | async)" class="w-75">
-    <div class="d-flex align-items-center justify-content-center row">
+    <div class="d-flex align-items-center justify-content-center row mb-3">
 
       <!-- User Card -->
-      <div class="d-flex align-items-center justify-content-center user-card card py-3 px-0 col-10 col-md-5 col-lg-3 m-1" BoxShadow Scale
+      <div
+        class="d-flex align-items-center justify-content-center user-card card py-3 px-0 col-10 col-md-5 col-lg-3 m-1"
+        BoxShadow Scale
         *ngFor="let user of (filteredUsers$ | async) || [] | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: (totalCount$ | async) || 0 }"
         (click)="navigateToUserDetails(user.id)">
 
@@ -20,6 +22,7 @@
       <pagination-controls (pageChange)="onPaginationChange($event)" previousLabel="Previous"
         nextLabel="Next"></pagination-controls>
     </div>
+
   </div>
 
 </div>

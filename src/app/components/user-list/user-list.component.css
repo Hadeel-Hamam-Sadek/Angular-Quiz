@@ -18,6 +18,7 @@
   .user-card {
     position: relative;
     overflow: hidden; 
+    cursor: pointer;
   }
   
   .user-card::before {
