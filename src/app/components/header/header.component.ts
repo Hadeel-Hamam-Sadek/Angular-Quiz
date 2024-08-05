@@ -12,7 +12,7 @@ export class HeaderComponent {
 
   onSearchInputChange(event: Event): void {
     const input = event.target as HTMLInputElement;
-    const userId = parseInt(input.value, 10);
+    const userId = parseInt(input.value);
     if (input.value === '') {
       this.searchService.updateSearchUserId(null);
     } else if (!isNaN(userId)) {
