@@ -16,6 +16,7 @@ import { BoxShadowDirective } from './directives/box-shadow.directive';
 import { ScaleDirective } from './directives/scale.directive';
 import { LoadingBarComponent } from './components/loading-bar/loading-bar.component';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { loadingInterceptor } from './interceptors/loading.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HttpClientModule,
     NgxPaginationModule,
     StoreModule.forRoot({ users: userReducer }), 
