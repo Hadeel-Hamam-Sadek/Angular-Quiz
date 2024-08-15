@@ -19,7 +19,7 @@
 
     <!-- Pagination -->
     <div class="text-center fw-bold">
-      <pagination-controls (pageChange)="onPaginationChange($event)" previousLabel="Previous"
+      <pagination-controls (click)="onPaginationChange(currentPage)" (pageChange)="currentPage=$event" previousLabel="Previous"
         nextLabel="Next"></pagination-controls>
     </div>
 
